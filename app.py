@@ -6,7 +6,7 @@ import zipfile
 
 app = Flask(__name__)
 
-zip_path = '/workspaces/icfes_proyecto_definitivo/random_forest_classifier_default_42.zip'
+zip_path = '/workspaces/icfes_proyecto_definitivo/model/random_forest_classifier_default_42.zip'
 
 # Nombre del archivo del modelo dentro del ZIP
 model_filename = 'random_forest_classifier_default_42.sav'
