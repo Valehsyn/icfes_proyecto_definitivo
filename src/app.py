@@ -4,22 +4,16 @@ import os
 import pickle
 import zipfile
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates')
 
-zip_path = '/workspaces/icfes_proyecto_definitivo/model/random_forest_classifier_default_42.zip'
+zip_path = '//workspaces/icfes_proyecto_definitivo/src/random_forest_classifier_default_42.zip'
 
-# Nombre del archivo del modelo dentro del ZIP
 model_filename = 'random_forest_classifier_default_42.sav'
 
-# Abrir el archivo ZIP
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-    # Leer el archivo del modelo desde el ZIP sin extraerlo
     with zip_ref.open(model_filename) as model_file:
-        # Cargar el modelo usando pickle
         model = pickle.load(model_file)
 
-
-#definir las categorias
 categories = (
     'EDAD', 
     'ESTU_COD_DEPTO_PRESENTACION', 
@@ -48,7 +42,6 @@ categories = (
     'PUNT_GLOBAL'
 )
 
-# Definir las respuestas
 answers = {
     'EDAD': [], 
     'ESTU_COD_DEPTO_PRESENTACION': ['AMAZONAS', 'ANTIOQUIA', 'ARAUCA', 'ATLANTICO', 'BOGOTÁ', 'BOLIVAR', 'BOYACA', 'CALDAS', 'CAQUETA', 'CASANARE', 'CAUCA', 'CESAR', 'CHOCO', 'CORDOBA', 'CUNDINAMARCA', 'GUAINIA', 'GUAVIARE', 'HUILA', 'LA GUAJIRA', 'MAGDALENA', 'META', 'NARIÑO', 'NORTE SANTANDER', 'PUTUMAYO', 'QUINDIO', 'RISARALDA', 'SANTANDER', 'SUCRE', 'TOLIMA', 'VALLE', 'VAUPES', 'VICHADA', 'SAN ANDRES'], 
@@ -76,7 +69,6 @@ answers = {
     'FAMI_TIENEMOTOCICLETA': ['No', 'Si']
 }
 
-# Diccionario de mapeo de nombres de columnas a preguntas descriptivas
 questions = {
     'EDAD': '¿Que edad tiene?', 
     'ESTU_COD_DEPTO_PRESENTACION': '¿En que departamento presentó la prueba?', 
@@ -216,7 +208,6 @@ answer_mapping = {
         }
 }
 
-#Quiero ser capaz de visualizar ambos dataframes, el numerico es el que el modelo usa para la predicción y el otro me permite ver los valores string, es decir, las opciones elegidas por los usuarios, para la visualizacion de datos.
 original_data_df = pd.DataFrame(columns=categories)
 numeric_data_df = pd.DataFrame(columns=categories)
 
@@ -224,7 +215,7 @@ numeric_data_df = pd.DataFrame(columns=categories)
 def home():
     prediction = None
     input_data = {}
-    numeric_input_data = {}  # Para almacenar valores numéricos
+    numeric_input_data = {} 
 
     if request.method == "POST":
         for feature, question in questions.items():
@@ -233,43 +224,32 @@ def home():
             else:
                 input_data[feature] = request.form[feature]
 
-                # Convertir la respuesta a un valor numérico
                 if feature in answer_mapping:
                     numeric_input_data[feature] = answer_mapping[feature][input_data[feature]]
                 else:
                     numeric_input_data[feature] = input_data[feature]
 
-        # Convertir los datos del formulario a un DataFrame de Pandas
         input_df = pd.DataFrame([numeric_input_data])
         
-        # Realizar predicción con el modelo
         prediction = model.predict(input_df)[0]
 
-        # Añadir la predicción al input_data y numeric_input_data
         input_data['PUNT_GLOBAL'] = prediction
         numeric_input_data['PUNT_GLOBAL'] = prediction
 
-        # Agregar los datos originales al DataFrame
         original_data_df.loc[len(original_data_df)] = input_data
         
-        # Agregar los datos numéricos al DataFrame
         numeric_data_df.loc[len(numeric_data_df)] = numeric_input_data
 
     return render_template("index.html", questions=questions, answers=answers, prediction=prediction)
 
-# Rutas para descargar los archivos CSV
 @app.route('/original_data_csv')
 def download_original_data_csv():
-    # Guardar el DataFrame como un archivo CSV con los nombres de columnas de categories
     original_data_df.to_csv('original_data.csv', index=False)
-    # Retornar el archivo CSV como una respuesta para descargar
     return send_file('original_data.csv', as_attachment=True)
 
 @app.route('/numeric_data_csv')
 def download_numeric_data_csv():
-    # Guardar el DataFrame como un archivo CSV con los nombres de columnas de categories
     numeric_data_df.to_csv('numeric_data.csv', index=False)
-    # Retornar el archivo CSV como una respuesta para descargar
     return send_file('numeric_data.csv', as_attachment=True)
 
 if __name__ == "__main__":
