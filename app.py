@@ -4,7 +4,7 @@ import os
 import pickle
 import zipfile
 
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__, template_folder='src')
 
 zip_path = '//workspaces/icfes_proyecto_definitivo/src/random_forest_classifier_default_42.zip'
 
