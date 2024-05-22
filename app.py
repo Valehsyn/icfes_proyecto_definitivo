@@ -39,6 +39,7 @@ categories = (
     'ESTU_COD_DEPTO_PRESENTACION',
     'ESTU_TIPOREMUNERACION',
     'FAMI_TIENECOMPUTADOR'
+    'PUNT_GLOBAL'
 )
 
 answers = {
@@ -81,8 +82,8 @@ questions = {
     'FAMI_TRABAJOLABORMADRE': '¿Mamá tiene empleo?, ¿Cual?',
     'FAMI_TIENEINTERNET': '¿Tiene internet?',
     'FAMI_TIENEHORNOMICROOGAS': '¿Tiene horno, microondas y/o estufa a gas?',
-    'FAMI_TIENEMOTOCICLETA': '¿Tiene moto?'
-    'FAMI_NUMLIBROS': '¿Cuantos libros tiene?',
+    'FAMI_TIENEMOTOCICLETA': '¿Tiene moto?',
+    'FAMI_NUMLIBROS': 'Cuantos libros tiene?',
     'FAMI_COMELECHEDERIVADOS': '¿Cuantas veces a la semana come leche o derivados de leche?',
     'FAMI_COMECARNEPESCADOHUEVO': '¿Cuantas veces a la semana come carne, pescado y/o huevo?',
     'FAMI_COMECEREALFRUTOSLEGUMBRE': '¿Cuantas veces a la semana come cereal, frutos y/o legumbres?',
@@ -161,7 +162,7 @@ answer_mapping = {
         },
     'FAMI_TIENEMOTOCICLETA': {
         'No': 0, 'Si': 1
-        }
+        },
     'FAMI_NUMLIBROS': {
         '0 A 10 LIBROS': 0, '11 A 25 LIBROS': 1, '26 A 100 LIBROS': 2, 'MÁS DE 100 LIBROS': 3
         },
@@ -204,6 +205,7 @@ answer_mapping = {
         },
     'FAMI_TIENECOMPUTADOR': {
         'No': 0, 'Si': 1
+    }
 }
 
 original_data_df = pd.DataFrame(columns=categories)
