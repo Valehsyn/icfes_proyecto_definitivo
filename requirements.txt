@@ -1,10 +1,10 @@
-ipyleaflet>=0.14.0
+ipyleaflet>=0.18.2
 ipywidgets>=7.7.1
-matplotlib>=3.7.0
+matplotlib>=3.7.1
 numpy>=1.25.2
-opencv-python>=4.1.2
-pandas>=1.5.3
-psycopg2-binary>=2.9.3
+opencv-python
+pandas>=1.25.2
+psycopg2-binary>=2.9.9
 pymysql>=1.0.2
 python-apt==0.0.0
 python-box==7.1.1
@@ -24,7 +24,6 @@ Werkzeug==2.0.3
 statsmodels==0.14.2
 patsy==0.5.6
 scipy==1.11.4
-gfortran
 flang
 nvfortran
 pgfortran
