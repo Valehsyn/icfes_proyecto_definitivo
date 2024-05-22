@@ -38,7 +38,7 @@ categories = (
     'ESTU_HORASSEMANATRABAJA',
     'ESTU_COD_DEPTO_PRESENTACION',
     'ESTU_TIPOREMUNERACION',
-    'FAMI_TIENECOMPUTADOR', 
+    'FAMI_TIENECOMPUTADOR'
 )
 
 answers = {
@@ -92,7 +92,7 @@ questions = {
     'ESTU_HORASSEMANATRABAJA': '¿Trabaja?, ¿Por cuantas horas?',
     'ESTU_COD_DEPTO_PRESENTACION': '¿En que departamento presentó la prueba?', 
     'ESTU_TIPOREMUNERACION': 'Si trabaja, ¿Como le pagan?',
-    'FAMI_TIENECOMPUTADOR': '¿Tiene computador?',
+    'FAMI_TIENECOMPUTADOR': '¿Tiene computador?'
 }
 
 answer_mapping = {
