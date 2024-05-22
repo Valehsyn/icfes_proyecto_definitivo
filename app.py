@@ -6,9 +6,9 @@ import zipfile
 
 app = Flask(__name__, template_folder='templates')
 
-zip_path = 'random_forest_classifier_default_42.zip'
+zip_path = 'modelo_xgboost.zip'
 
-model_filename = 'random_forest_classifier_default_42.sav'
+model_filename = 'modelo_xgboost.sav'
 
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     with zip_ref.open(model_filename) as model_file:
