@@ -39,7 +39,6 @@ categories = (
     'FAMI_TIENECOMPUTADOR', 
     'FAMI_TIENEHORNOMICROOGAS', 
     'FAMI_TIENEMOTOCICLETA'
-    'PUNT_GLOBAL'
 )
 
 answers = {
@@ -89,7 +88,7 @@ questions = {
     'FAMI_SITUACIONECONOMICA': 'En comparación con el año anterior, ¿como esta la economia familiar hoy?',
     'FAMI_TRABAJOLABORMADRE': '¿Mamá tiene empleo?, ¿Cual?',
     'FAMI_TRABAJOLABORPADRE': '¿Papá tiene empleo?, ¿Cual?',
-    'ESTU_GENERO': '¿Con que género biologico nacio?',
+    'ESTU_GENERO': '¿Con que género biológico nacio?',
     'FAMI_TIENEINTERNET': '¿Tiene internet?',
     'FAMI_TIENECOMPUTADOR': '¿Tiene computador?',
     'FAMI_TIENEHORNOMICROOGAS': '¿Tiene horno, microondas y/o estufa a gas?',
